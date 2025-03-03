@@ -3,7 +3,7 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "text": "github:jnollen13/text-rpg#master"
+        "Sprite Grid": "github:microsoft/arcade-grid#v1.3.0"
     },
     "files": [
         "main.blocks",

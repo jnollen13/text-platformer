@@ -7,20 +7,38 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         jump += 1
     }
 })
+let v2 = 0
 let jump = 0
 let mySprite: Sprite = null
-adventure.addToTextlog("ready?")
 mySprite = sprites.create(assets.image`player1`, SpriteKind.Player)
 mySprite.setStayInScreen(true)
 mySprite.ay = 11
 mySprite.setBounceOnWall(false)
 scene.cameraFollowSprite(mySprite)
 tiles.setCurrentTilemap(tilemap`level2`)
-mySprite.vx = 67
+tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 8))
+animation.runImageAnimation(
+mySprite,
+assets.animation`playera`,
+355,
+true
+)
 game.onUpdate(function () {
+    mySprite.vx = 67
     if (!(mySprite.isHittingTile(CollisionDirection.Bottom))) {
+        animation.stopAnimation(animation.AnimationTypes.ImageAnimation, mySprite)
         mySprite.ay = 30
+        v2 = 1
     } else if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
         jump = 0
+        if (v2 == 1) {
+            animation.runImageAnimation(
+            mySprite,
+            assets.animation`playera`,
+            355,
+            true
+            )
+            v2 = 0
+        }
     }
 })
