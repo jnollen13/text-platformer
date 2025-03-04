@@ -14,6 +14,41 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "dc"
     },
+    "image4": {
+        "data": "hwQIAAgAAAAAu8wAsFXVD1s90/1bUxX9W1MV/Vsd0f2wVd0PALvMAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "coin"
+    },
+    "image5": {
+        "data": "hwQQABAAAAD/AAAAAAAAAC//AAAAAAAALyL/AAAAAAAvIiL/AAAAAC8iIiL/AAAALyIiIiL/AAAvIiIiIiL/AC8iIiIiIkT/LyIiIiJEVf8vIiIiRFX/AC8iIkRV/wAALyJEVf8AAAAvRFX/AAAAAE9V/wAAAAAAX/8AAAAAAAD/AAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spike"
+    },
+    "image6": {
+        "data": "hwQQABAAAAD/AAAAAAAAAC//AAAAAAAALyL/AAAAAAAvIiL/AAAAAC8iIiL/AAAALyIiIiL/AAAvIiIiIiL/AC8iIiIiIkT/LyIiIiJEVf8vIiIiRFX/AC8iIkJV/wAALyIiVP8AAAAvIkT/AAAAAC9E/wAAAAAAT/8AAAAAAAD/AAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spike0"
+    },
+    "image7": {
+        "data": "hwQQABAAAAD/AAAAAAAAAC//AAAAAAAALyL/AAAAAAAvIiL/AAAAAC8iIiL/AAAALyIiIiL/AAAvIiIiIiL/AC8iIiIiIkT/LyIiIiJCVf8vIiIiIlT/AC8iIiJE/wAALyIiRP8AAAAvIkT/AAAAAC9E/wAAAAAAT/8AAAAAAAD/AAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spike1"
+    },
+    "image8": {
+        "data": "hwQQABAAAAD/AAAAAAAAAC//AAAAAAAALyL/AAAAAAAvIiL/AAAAAC8iIiL/AAAALyIiIiL/AAAvIiIiIiL/AC8iIiIiIkL/LyIiIiIiVP8vIiIiIkT/AC8iIiJE/wAALyIiRP8AAAAvIkT/AAAAAC9E/wAAAAAAT/8AAAAAAAD/AAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spike2"
+    },
+    "image9": {
+        "data": "hwQQABAAAAD/AAAAAAAAAC//AAAAAAAALyL/AAAAAAAvIiL/AAAAAC8iIiL/AAAALyIiIiL/AAAvIiIiIiL/AC8iIiIiIiL/LyIiIiIiRP8vIiIiIkT/AC8iIiJE/wAALyIiRP8AAAAvIkT/AAAAAC9E/wAAAAAAT/8AAAAAAAD/AAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spike3"
+    },
+    "image10": {
+        "data": "hwQQABAAAAD/AAAAAAAAAC//AAAAAAAALyL/AAAAAAAvIiL/AAAAAC8iIiL/AAAALyIiIiL/AAAvIiIiIiL/AC8iIiIiIiL/LyIiIiIiRP8vIiIiIkT/AC8iIiJE/wAALyIiQv8AAAAvIiL/AAAAAC8i/wAAAAAAL/8AAAAAAAD/AAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spike4"
+    },
     "l)/xKg]p|iNv06I": {
         "namespace": "d!3N",
         "id": "l)/xKg]p|iNv06I",
@@ -27,6 +62,13 @@
         "mimeType": "application/mkcd-animation",
         "data": "NGYwMTEwMDAxMDAwMDQwMDAwMDBmZmZmZmYwMDAwMDAwMGYwZjJlZWVlZmYwMDAwMDAyZjIyZWZlZWZlMGYwMDAwZWZlZWZlZWZlZTBmMDBmMDJlMjJlMmZlZmYwZjAwZjBlMmZmZmYyMmUyMGYwMGYwZmZlZWZlZmZmZmZmMDBmMGVlNDRiZjRlZTRmZjAwMDBlZmRkMWZkNGU0ZmUwMDAwZjBkZGRkZTRlZTBmMDAwMGYwNGU0NGVlZmYwMDAwMDBmMDIyZTJkZDA0MDAwMDAwZjAyMmUyZGQwZTAwMDAwMGYwNTVmNGVlMGYwMDAwMDAwMGZmZmZmZjAwMDAwMDAwMDAwMGZmMGYwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMGZmZmZmZjAwMDAwMDAwZjBmMmVlZWVmZjAwMDAwMDJmMjJlZmVlZmUwZjAwMDBlZmVlZmVlZmVlMGYwMGYwMmUyMmUyZmVmZjBmMDBmMGUyZmZmZjIyZTIwZjAwZjBmZmVlZmVmZmZmZmYwMGYwZWU0NGJmNGVlNGZmMDAwMGVmZGQxZmQ0ZTRmZTAwMDBmMGRkZWRlZWVlMGYwMDAwZjA0ZWRlNGQwZjAwMDAwMGYwMjJkZWVkMGYwMDAwMDBmMDU1ZWZmZTBmMDAwMDAwZjBmZmZmZmYwZjAwMDAwMGYwZmYwMGYwMGYwMDAwMDAwMGZmZmZmZjAwMDAwMDAwZjBmMmVlZWVmZjAwMDAwMDJmMjJlZmVlZmUwZjAwMDBlZmVlZmVlZmVlMGYwMGYwMmUyMmUyZmVmZjBmMDBmMGUyZmZmZjIyZTIwZjAwZjBmZmVlZmVmZmZmZmYwMGYwZWU0NGJmNGVlNGZmMDAwMGVmZGQxZmQ0ZTRmZTAwMDBmMGRkZGRlNGVlMGYwMDAwZjA0ZTQ0ZWVmZjAwMDAwMGYwMjJlMmRkMDQwMDAwMDBmMDIyZTJkZDBlMDAwMDAwZjA1NWY0ZWUwZjAwMDAwMDAwZmZmZmZmMDAwMDAwMDAwMDAwZmYwZjAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwZmZmZmZmMDAwMDAwMDBmMGYyZWVlZWZmMDAwMDAwMmYyMmVmZWVmZTBmMDAwMGVmZWVmZWVmZWUwZjAwZjAyZTIyZTJmZWZmMGYwMGYwZTJmZmZmMjJlMjBmMDBmMGZmZWVmZWZmZmZmZjAwZjBlZTQ0YmY0ZWU0ZmYwMDAwZWZkZDFmZDRlNGZlMDAwMGYwZGRkZGU0ZWUwZjAwMDBmMDRlNDRkZTRkMDAwMDAwZjAyMjIyZGVlZDAwMDAwMGYwNTU0NGVmZmUwMDAwMDBmMGZmZmZmZjBmMDAwMDAwZjBmZjAwZjAwZjAwMDA=",
         "displayName": "playeral"
+    },
+    "anim2": {
+        "namespace": "myAnimations",
+        "id": "anim2",
+        "mimeType": "application/mkcd-animation",
+        "data": "NmYwMDA4MDAwODAwMDYwMDAwYmJiYjAwYjA1NTU1MGI1YjNkZDNiNTViNTMxNWI1NWM1MzE1Y2RkYzFkZDFjZGYwZGRkZDBmMDBmZmZmMDAwMGJiMGIwMGIwNTViNTAwNWIzZDVkMGI1YjUzNTEwYjVjNTNkMTBjNWMxZGRkMGNmMGRkZmQwMDAwZmYwZjAwMDBiMDBiMDAwMDViYjUwMGIwZDU1MTBiYjAzNTUxMGJjMDM1ZDEwY2MwMTVkZDBjMDBkZmZkMDAwMGYwMGYwMDAwYjAwYjAwMDA1YmI1MDAwMDFiYjEwMDAwNWJiNTAwMDBkYmJkMDAwMGRjY2QwMDAwM2NjMzAwMDBmMDBmMDAwMGIwMGIwMDAwNWJiNTAwYjAxNTVkMGJiMDE1NTMwYmMwMWQ1MzBjYzBkZDUxMGMwMGRmZmQwMDAwZjAwZjAwMDBiMGJiMDAwMDViNTUwYmIwZDVkM2I1YjAxNTM1YjVjMDFkMzVjNWMwZGRkMWM1MDBkZmRkMGYwMGYwZmYwMA==",
+        "displayName": "coinanimation"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
