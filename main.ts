@@ -55,10 +55,16 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
             game.showLongText("starting level 2", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level02`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 30))
+            if (story_mode == 1) {
+                game.showLongText("This area contains tons of blocks floating in the air and many bad paths...", DialogLayout.Center)
+            }
         } else if (lvl == 2) {
             game.showLongText("starting level 3", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level0`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 18))
+            if (story_mode == 1) {
+                game.showLongText("This area contains both long jumps and consecutive short jumps.            press up to climb the ladders.", DialogLayout.Center)
+            }
         } else if (lvl == 3) {
             game.showLongText("starting level 4", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level3`)
@@ -71,6 +77,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
             111,
             true
             )
+            if (story_mode == 1) {
+                game.showLongText("This area contains ladders and a door to try and stop enemies.", DialogLayout.Center)
+            }
         } else if (lvl == 4) {
             game.showLongText("starting level 5", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level5`)
@@ -127,19 +136,29 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
             mySprite12.setVelocity(0, 60)
             mySprite13.setVelocity(0, 65)
             mySprite14.setVelocity(0, 10)
+            if (story_mode == 1) {
+                game.showLongText("Beware the spikes...", DialogLayout.Center)
+            }
         } else if (lvl == 5) {
             sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
             game.showLongText("starting level 6", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level6`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
+            if (story_mode == 1) {
+                game.showLongText("Ladders with the bottoms floating above lava!? Isn't that awesome?", DialogLayout.Center)
+            }
         } else if (lvl == 6) {
             game.showLongText("starting level 7", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level8`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
+            if (story_mode == 1) {
+                game.showLongText("There is a second way out of this area but you melt in it which makes it kind of hard to use...", DialogLayout.Center)
+            }
         } else if (lvl == 7) {
             game.showLongText("starting level 8", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level11`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
+            game.showLongText("Jumps so far you can't see the next platform. what's next!", DialogLayout.Bottom)
         } else if (lvl == 8) {
             game.showLongText("starting level 9", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level15`)
@@ -151,7 +170,14 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
             go = 1
             bird2.setBounceOnWall(true)
         } else if (lvl == 9) {
-            tiles.setCurrentTilemap(tilemap`level18`)
+            game.showLongText("starting level 10", DialogLayout.Full)
+            if (story_mode == 1) {
+                game.showLongText("In this area there are high gravity places that will pull you into lava. fun, right?", DialogLayout.Bottom)
+            }
+            tiles.setCurrentTilemap(tilemap`level-perfect skill`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 19))
+        } else if (lvl == 10) {
+            tiles.setCurrentTilemap(tilemap`level36`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
         }
         if (select == 1) {
@@ -166,6 +192,9 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     355,
     true
     )
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, location) {
+    mySprite.vy += 32
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite, location) {
     mySprite.setVelocity(-999, 0)
@@ -244,6 +273,7 @@ let mySprite2: Sprite = null
 let v3 = 0
 let jump = 0
 let select = 0
+let story_mode = 0
 let lvl1not = 0
 let sound = 0
 let speedrun = 0
@@ -290,8 +320,15 @@ if (story.checkLastAnswer("in order (Recommended)")) {
     game.setDialogTextColor(15)
     game.setDialogCursor(assets.image`dc2`)
     lvl1not = 1
+    story.showPlayerChoices("story mode", "normal")
+    if (story.checkLastAnswer("story mode")) {
+        game.setDialogFrame(assets.image`dfadventue`)
+        story_mode = 1
+    } else if (story.checkLastAnswer("normal")) {
+        lvl1not = 1
+    }
 } else if (story.checkLastAnswer("random level")) {
-    lvl = randint(1, 7)
+    lvl = randint(1, 8)
     tiles.setCurrentTilemap(tilemap`levelrandit`)
     tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
     lvl1not = 0
@@ -302,7 +339,7 @@ if (story.checkLastAnswer("in order (Recommended)")) {
     if (story.checkLastAnswer("higher")) {
         story.showPlayerChoices("level 4", "level 5", "level 6", "higher")
         if (story.checkLastAnswer("higher")) {
-            story.showPlayerChoices("level 7", "level 8", "level 9")
+            story.showPlayerChoices("level 7", "level 8", "level 9", "level 10")
             if (story.checkLastAnswer("level 7")) {
                 lvl = 5
                 tiles.setCurrentTilemap(tilemap`levelrandit`)
@@ -313,6 +350,10 @@ if (story.checkLastAnswer("in order (Recommended)")) {
                 tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
             } else if (story.checkLastAnswer("level 9")) {
                 lvl = 7
+                tiles.setCurrentTilemap(tilemap`levelrandit`)
+                tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+            } else if (story.checkLastAnswer("level 10")) {
+                lvl = 8
                 tiles.setCurrentTilemap(tilemap`levelrandit`)
                 tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
             }
@@ -342,14 +383,18 @@ if (story.checkLastAnswer("in order (Recommended)")) {
     }
 }
 controller.moveSprite(mySprite, 53, 0)
-let delay = game.runtime()
 mySprite.setVelocity(0, 0)
 start = 0
 scene.cameraFollowSprite(mySprite)
 if (lvl1not == 1) {
     tiles.setCurrentTilemap(tilemap`level1`)
     tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
+    if (story_mode == 1) {
+        game.showLongText("You are entering a castle on the moon. In order to get in, you have to beat all the obstacles ahead. The castle added these to keep out intruders.", DialogLayout.Center)
+        game.showLongText("welcome to castle Lavacrate!", DialogLayout.Full)
+    }
 }
+let delay = game.runtime()
 game.onUpdate(function () {
     if (!(mySprite.isHittingTile(CollisionDirection.Bottom))) {
         animation.stopAnimation(animation.AnimationTypes.ImageAnimation, mySprite)
@@ -389,8 +434,8 @@ game.onUpdate(function () {
         }
     }
 })
-game.onUpdateInterval(61329, function () {
-    if (sound == 1 && Math.percentChance(12.2)) {
+game.onUpdateInterval(61328, function () {
+    if (sound == 1 && Math.percentChance(13.2)) {
         music.play(music.createSong(assets.song`song0`), music.PlaybackMode.UntilDone)
     }
 })
