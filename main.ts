@@ -14,15 +14,14 @@ function jumping () {
                 mySprite.startEffect(effects.trail, randint(222, 777))
             }
             jump += 1
+            if (sound == 1) {
+                music.play(music.melodyPlayable(music.jumpUp), music.PlaybackMode.InBackground)
+            }
         }
     }
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     jumping()
-})
-controller.combos.attachCombo("U+DU+DBBA", function () {
-    lvl += 1
-    game.splash("U+DU+DBBA", "developer button combo")
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, location) {
     if (controller.B.isPressed()) {
@@ -47,109 +46,114 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
-    lvl += 1
-    if (lvl == 1) {
-        game.showLongText("lvl 1 complete", DialogLayout.Full)
-        tiles.setCurrentTilemap(tilemap`level02`)
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 30))
-    } else if (lvl == 2) {
-        game.showLongText("lvl 2 complete", DialogLayout.Full)
-        tiles.setCurrentTilemap(tilemap`level0`)
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 18))
-    } else if (lvl == 3) {
-        game.showLongText("lvl 3 complete", DialogLayout.Full)
-        tiles.setCurrentTilemap(tilemap`level3`)
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 15))
-        mySprite2 = sprites.create(assets.image`coin`, SpriteKind.coinlvl3)
-        tiles.placeOnTile(mySprite2, tiles.getTileLocation(32, 6))
-        animation.runImageAnimation(
-        mySprite2,
-        assets.animation`coinanimation`,
-        111,
-        true
-        )
-    } else if (lvl == 4) {
-        game.showLongText("lvl 4 complete", DialogLayout.Full)
-        tiles.setCurrentTilemap(tilemap`level5`)
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(31, 1))
-        mySprite3 = sprites.create(assets.image`spike`, SpriteKind.Enemy)
-        mySprite2 = sprites.create(assets.image`spike`, SpriteKind.Enemy)
-        mySprite4 = sprites.create(assets.image`spike0`, SpriteKind.Enemy)
-        mySprite5 = sprites.create(assets.image`spike0`, SpriteKind.Enemy)
-        mySprite6 = sprites.create(assets.image`spike1`, SpriteKind.Enemy)
-        mySprite7 = sprites.create(assets.image`spike1`, SpriteKind.Enemy)
-        mySprite8 = sprites.create(assets.image`spike2`, SpriteKind.Enemy)
-        mySprite9 = sprites.create(assets.image`spike2`, SpriteKind.Enemy)
-        mySprite10 = sprites.create(assets.image`spike3`, SpriteKind.Enemy)
-        mySprite11 = sprites.create(assets.image`spike3`, SpriteKind.Enemy)
-        mySprite12 = sprites.create(assets.image`spike3`, SpriteKind.Enemy)
-        mySprite13 = sprites.create(assets.image`spike4`, SpriteKind.Enemy)
-        mySprite14 = sprites.create(assets.image`spike4`, SpriteKind.Enemy)
-        tiles.placeOnTile(mySprite3, tiles.getTileLocation(29, 11))
-        tiles.placeOnTile(mySprite2, tiles.getTileLocation(28, 11))
-        tiles.placeOnTile(mySprite4, tiles.getTileLocation(27, 11))
-        tiles.placeOnTile(mySprite5, tiles.getTileLocation(26, 11))
-        tiles.placeOnTile(mySprite6, tiles.getTileLocation(25, 11))
-        tiles.placeOnTile(mySprite7, tiles.getTileLocation(24, 11))
-        tiles.placeOnTile(mySprite8, tiles.getTileLocation(23, 11))
-        tiles.placeOnTile(mySprite9, tiles.getTileLocation(22, 11))
-        tiles.placeOnTile(mySprite10, tiles.getTileLocation(21, 11))
-        tiles.placeOnTile(mySprite11, tiles.getTileLocation(20, 11))
-        tiles.placeOnTile(mySprite12, tiles.getTileLocation(19, 11))
-        tiles.placeOnTile(mySprite13, tiles.getTileLocation(18, 11))
-        tiles.placeOnTile(mySprite14, tiles.getTileLocation(17, 11))
-        mySprite3.setBounceOnWall(true)
-        mySprite2.setBounceOnWall(true)
-        mySprite4.setBounceOnWall(true)
-        mySprite5.setBounceOnWall(true)
-        mySprite6.setBounceOnWall(true)
-        mySprite7.setBounceOnWall(true)
-        mySprite8.setBounceOnWall(true)
-        mySprite9.setBounceOnWall(true)
-        mySprite10.setBounceOnWall(true)
-        mySprite11.setBounceOnWall(true)
-        mySprite12.setBounceOnWall(true)
-        mySprite13.setBounceOnWall(true)
-        mySprite14.setBounceOnWall(true)
-        mySprite3.setVelocity(0, 10)
-        mySprite2.setVelocity(0, 15)
-        mySprite4.setVelocity(0, 20)
-        mySprite5.setVelocity(0, 25)
-        mySprite6.setVelocity(0, 30)
-        mySprite7.setVelocity(0, 35)
-        mySprite8.setVelocity(0, 40)
-        mySprite9.setVelocity(0, 45)
-        mySprite10.setVelocity(0, 50)
-        mySprite11.setVelocity(0, 55)
-        mySprite12.setVelocity(0, 60)
-        mySprite13.setVelocity(0, 65)
-        mySprite14.setVelocity(0, 10)
-    } else if (lvl == 5) {
-        sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
-        game.showLongText("Lvl 5 complete", DialogLayout.Full)
-        tiles.setCurrentTilemap(tilemap`level6`)
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
-    } else if (lvl == 6) {
-        game.showLongText("lvl 6 complete", DialogLayout.Full)
-        tiles.setCurrentTilemap(tilemap`level8`)
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
-    } else if (lvl == 7) {
-        game.showLongText("lvl 7 complete", DialogLayout.Full)
-        tiles.setCurrentTilemap(tilemap`level11`)
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
-    } else if (lvl == 8) {
-        game.showLongText("Lvl 8 complete", DialogLayout.Full)
-        tiles.setCurrentTilemap(tilemap`level15`)
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 168))
-        birdtype = randint(1, 2)
-        bird = sprites.create(assets.image`birdL`, SpriteKind.bird)
-        tiles.placeOnTile(bird, tiles.getTileLocation(15, 116))
-        bird.setVelocity(-75, 0)
-        go = 1
-        bird.setBounceOnWall(true)
-    } else if (lvl == 9) {
-        tiles.setCurrentTilemap(tilemap`level18`)
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+    if (select == 1) {
+        game.showLongText("Level complete.", DialogLayout.Full)
+        game.reset()
+    } else {
+        lvl += 1
+        if (lvl == 1) {
+            game.showLongText("starting level 2", DialogLayout.Full)
+            tiles.setCurrentTilemap(tilemap`level02`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 30))
+        } else if (lvl == 2) {
+            game.showLongText("starting level 3", DialogLayout.Full)
+            tiles.setCurrentTilemap(tilemap`level0`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 18))
+        } else if (lvl == 3) {
+            game.showLongText("starting level 4", DialogLayout.Full)
+            tiles.setCurrentTilemap(tilemap`level3`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 15))
+            mySprite2 = sprites.create(assets.image`coin`, SpriteKind.coinlvl3)
+            tiles.placeOnTile(mySprite2, tiles.getTileLocation(32, 6))
+            animation.runImageAnimation(
+            mySprite2,
+            assets.animation`coinanimation`,
+            111,
+            true
+            )
+        } else if (lvl == 4) {
+            game.showLongText("starting level 5", DialogLayout.Full)
+            tiles.setCurrentTilemap(tilemap`level5`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(31, 1))
+            mySprite3 = sprites.create(assets.image`spike`, SpriteKind.Enemy)
+            mySprite2 = sprites.create(assets.image`spike`, SpriteKind.Enemy)
+            mySprite4 = sprites.create(assets.image`spike0`, SpriteKind.Enemy)
+            mySprite5 = sprites.create(assets.image`spike0`, SpriteKind.Enemy)
+            mySprite6 = sprites.create(assets.image`spike1`, SpriteKind.Enemy)
+            mySprite7 = sprites.create(assets.image`spike1`, SpriteKind.Enemy)
+            mySprite8 = sprites.create(assets.image`spike2`, SpriteKind.Enemy)
+            mySprite9 = sprites.create(assets.image`spike2`, SpriteKind.Enemy)
+            mySprite10 = sprites.create(assets.image`spike3`, SpriteKind.Enemy)
+            mySprite11 = sprites.create(assets.image`spike3`, SpriteKind.Enemy)
+            mySprite12 = sprites.create(assets.image`spike3`, SpriteKind.Enemy)
+            mySprite13 = sprites.create(assets.image`spike4`, SpriteKind.Enemy)
+            mySprite14 = sprites.create(assets.image`spike4`, SpriteKind.Enemy)
+            tiles.placeOnTile(mySprite3, tiles.getTileLocation(29, 11))
+            tiles.placeOnTile(mySprite2, tiles.getTileLocation(28, 11))
+            tiles.placeOnTile(mySprite4, tiles.getTileLocation(27, 11))
+            tiles.placeOnTile(mySprite5, tiles.getTileLocation(26, 11))
+            tiles.placeOnTile(mySprite6, tiles.getTileLocation(25, 11))
+            tiles.placeOnTile(mySprite7, tiles.getTileLocation(24, 11))
+            tiles.placeOnTile(mySprite8, tiles.getTileLocation(23, 11))
+            tiles.placeOnTile(mySprite9, tiles.getTileLocation(22, 11))
+            tiles.placeOnTile(mySprite10, tiles.getTileLocation(21, 11))
+            tiles.placeOnTile(mySprite11, tiles.getTileLocation(20, 11))
+            tiles.placeOnTile(mySprite12, tiles.getTileLocation(19, 11))
+            tiles.placeOnTile(mySprite13, tiles.getTileLocation(18, 11))
+            tiles.placeOnTile(mySprite14, tiles.getTileLocation(17, 11))
+            mySprite3.setBounceOnWall(true)
+            mySprite2.setBounceOnWall(true)
+            mySprite4.setBounceOnWall(true)
+            mySprite5.setBounceOnWall(true)
+            mySprite6.setBounceOnWall(true)
+            mySprite7.setBounceOnWall(true)
+            mySprite8.setBounceOnWall(true)
+            mySprite9.setBounceOnWall(true)
+            mySprite10.setBounceOnWall(true)
+            mySprite11.setBounceOnWall(true)
+            mySprite12.setBounceOnWall(true)
+            mySprite13.setBounceOnWall(true)
+            mySprite14.setBounceOnWall(true)
+            mySprite3.setVelocity(0, 10)
+            mySprite2.setVelocity(0, 15)
+            mySprite4.setVelocity(0, 20)
+            mySprite5.setVelocity(0, 25)
+            mySprite6.setVelocity(0, 30)
+            mySprite7.setVelocity(0, 35)
+            mySprite8.setVelocity(0, 40)
+            mySprite9.setVelocity(0, 45)
+            mySprite10.setVelocity(0, 50)
+            mySprite11.setVelocity(0, 55)
+            mySprite12.setVelocity(0, 60)
+            mySprite13.setVelocity(0, 65)
+            mySprite14.setVelocity(0, 10)
+        } else if (lvl == 5) {
+            sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
+            game.showLongText("starting level 6", DialogLayout.Full)
+            tiles.setCurrentTilemap(tilemap`level6`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
+        } else if (lvl == 6) {
+            game.showLongText("starting level 7", DialogLayout.Full)
+            tiles.setCurrentTilemap(tilemap`level8`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
+        } else if (lvl == 7) {
+            game.showLongText("starting level 8", DialogLayout.Full)
+            tiles.setCurrentTilemap(tilemap`level11`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
+        } else if (lvl == 8) {
+            game.showLongText("starting level 9", DialogLayout.Full)
+            tiles.setCurrentTilemap(tilemap`level15`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 168))
+            birdtype = randint(1, 2)
+            bird2 = sprites.create(assets.image`birdL`, SpriteKind.bird)
+            tiles.placeOnTile(bird2, tiles.getTileLocation(15, 116))
+            bird2.setVelocity(-75, 0)
+            go = 1
+            bird2.setBounceOnWall(true)
+        } else if (lvl == 9) {
+            tiles.setCurrentTilemap(tilemap`level18`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+        }
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -175,7 +179,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, l
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
     if (controller.up.isPressed()) {
-        mySprite.vy += -10
+        mySprite.vy += -5
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.bird, function (sprite, otherSprite) {
@@ -192,11 +196,17 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.bird, function (sprite, otherSpr
             mySprite.y += 33
         }
     }
+    if (sound == 1) {
+        music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.InBackground)
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile14`, function (sprite, location) {
     tiles.placeOnRandomTile(mySprite, assets.tile`myTile`)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.coinlvl3, function (sprite, otherSprite) {
+    if (sound == 1) {
+        music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
+    }
     sprites.destroy(mySprite2, effects.rings, 111)
     tiles.setWallAt(tiles.getTileLocation(23, 7), false)
     tiles.setTileAt(tiles.getTileLocation(23, 7), assets.tile`myTile0`)
@@ -204,13 +214,16 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.coinlvl3, function (sprite, othe
     tiles.setTileAt(tiles.getTileLocation(23, 8), assets.tile`myTile0`)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    if (sound == 1) {
+        music.play(music.melodyPlayable(music.powerDown), music.PlaybackMode.InBackground)
+    }
     game.splash("Congratulations!", "You were stabbed...")
     if (lvl == 4) {
         tiles.placeOnTile(mySprite, tiles.getTileLocation(31, 1))
     }
 })
 let v2 = 0
-let bird: Sprite = null
+let bird2: Sprite = null
 let birdtype = 0
 let mySprite14: Sprite = null
 let mySprite13: Sprite = null
@@ -226,13 +239,16 @@ let mySprite4: Sprite = null
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
 let jump = 0
+let select = 0
+let lvl1not = 0
 let sound = 0
+let speedrun = 0
 let gravityud = 0
 let mySprite: Sprite = null
 let lvl = 0
 let go = 0
 let start = 0
-let speedrun = 0
+scene.setBackgroundImage(assets.image`bg`)
 start = 1
 go = 0
 lvl = 0
@@ -243,9 +259,6 @@ mySprite = sprites.create(assets.image`player1`, SpriteKind.Player)
 mySprite.setStayInScreen(true)
 mySprite.ay = 0
 mySprite.setBounceOnWall(false)
-scene.cameraFollowSprite(mySprite)
-tiles.setCurrentTilemap(tilemap`level1`)
-tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
 gravityud = 0
 game.splash("game options")
 story.showPlayerChoices("show physics", "don't show physics")
@@ -267,10 +280,72 @@ if (story.checkLastAnswer("sound on?")) {
 } else if (story.checkLastAnswer("sound off?")) {
     sound = 0
 }
+story.showPlayerChoices("in order (Recommended)", "random level", "level select")
+if (story.checkLastAnswer("in order (Recommended)")) {
+    game.setDialogFrame(assets.image`df2`)
+    game.setDialogTextColor(15)
+    game.setDialogCursor(assets.image`dc2`)
+    lvl1not = 1
+} else if (story.checkLastAnswer("random level")) {
+    lvl = randint(1, 7)
+    tiles.setCurrentTilemap(tilemap`levelrandit`)
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+    lvl1not = 0
+    select = 1
+} else if (story.checkLastAnswer("level select")) {
+    select = 1
+    story.showPlayerChoices("level 1", "level 2", "level 3", "higher")
+    if (story.checkLastAnswer("higher")) {
+        story.showPlayerChoices("level 4", "level 5", "level 6", "higher")
+        if (story.checkLastAnswer("higher")) {
+            story.showPlayerChoices("level 7", "level 8", "level 9")
+            if (story.checkLastAnswer("level 7")) {
+                lvl = 5
+                tiles.setCurrentTilemap(tilemap`levelrandit`)
+                tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+            } else if (story.checkLastAnswer("level 8")) {
+                lvl = 6
+                tiles.setCurrentTilemap(tilemap`levelrandit`)
+                tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+            } else if (story.checkLastAnswer("level 9")) {
+                lvl = 7
+                tiles.setCurrentTilemap(tilemap`levelrandit`)
+                tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+            }
+        } else if (story.checkLastAnswer("level 4")) {
+            lvl = 2
+            tiles.setCurrentTilemap(tilemap`levelrandit`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+        } else if (story.checkLastAnswer("level 5")) {
+            lvl = 3
+            tiles.setCurrentTilemap(tilemap`levelrandit`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+        } else if (story.checkLastAnswer("level 6")) {
+            lvl = 4
+            tiles.setCurrentTilemap(tilemap`levelrandit`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+        }
+    } else if (story.checkLastAnswer("level 1")) {
+        lvl1not = 1
+    } else if (story.checkLastAnswer("level 2")) {
+        lvl = 0
+        tiles.setCurrentTilemap(tilemap`levelrandit`)
+        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+    } else if (story.checkLastAnswer("level 3")) {
+        lvl = 1
+        tiles.setCurrentTilemap(tilemap`levelrandit`)
+        tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+    }
+}
 controller.moveSprite(mySprite, 53, 0)
-pause(100)
+let delay = game.runtime()
 mySprite.setVelocity(0, 0)
 start = 0
+scene.cameraFollowSprite(mySprite)
+if (lvl1not == 1) {
+    tiles.setCurrentTilemap(tilemap`level1`)
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
+}
 game.onUpdate(function () {
     if (!(mySprite.isHittingTile(CollisionDirection.Bottom))) {
         animation.stopAnimation(animation.AnimationTypes.ImageAnimation, mySprite)
@@ -293,7 +368,7 @@ game.onUpdate(function () {
 })
 game.onUpdate(function () {
     if (speedrun == 1) {
-        info.setScore(game.runtime())
+        info.setScore(game.runtime() - delay)
     }
 })
 game.onUpdate(function () {
@@ -303,14 +378,14 @@ game.onUpdate(function () {
 })
 game.onUpdate(function () {
     if (go == 1) {
-        if (bird.isHittingTile(CollisionDirection.Left)) {
-            bird.setImage(assets.image`birdR`)
-        } else if (bird.isHittingTile(CollisionDirection.Right)) {
-            bird.setImage(assets.image`birdL`)
+        if (bird2.isHittingTile(CollisionDirection.Left)) {
+            bird2.setImage(assets.image`birdR`)
+        } else if (bird2.isHittingTile(CollisionDirection.Right)) {
+            bird2.setImage(assets.image`birdL`)
         }
     }
 })
-game.onUpdateInterval(60000, function () {
+game.onUpdateInterval(61329, function () {
     if (sound == 1 && Math.percentChance(12.2)) {
         music.play(music.createSong(assets.song`song0`), music.PlaybackMode.UntilDone)
     }
