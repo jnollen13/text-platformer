@@ -443,6 +443,109 @@ e4e4444444444e4e1111111111111111111111111111111111111111111111111111111111111111
 .......dbd......
 ........b.......
 `;
+            case "image17":
+            case "SkovgaardR":return img`
+.................bbbb........bbbb
+.................b99bb......bb99c
+.................c999bb....bb999c
+.................c9b99bccccb99b9c
+.................c9bb99bccb99bb9c
+.................c93b99999999b39c
+.................c93399999999339c
+.................c99399999999399c
+.................c99999119999999c
+...bbbbbb........c99229111922999c
+.bb999999c.......c99221111922999c
+.b99999999c......c99911111119999c
+b9999111999c.....c9911fff1111999c
+b9991111199c.....cb9911fff11c999c
+b99111dd119c.....cb9c111111cc999c
+c9911dbbddbc....ccb99cc33bb99999c
+c9911bbbdbbccccbb99999c33b999999c
+c9991bb9999999999999999bb9999999c
+c999b999999999999999999911119999c
+.c999999999999999999999111111999c
+.cc99999999999999999991111111999c
+..c99999999999999999991111111199c
+..c99999999999999999911111111199c
+..c9999999999999999991111111119bc
+..c9999999999999999991111111119f.
+..c999999999999999999111111111ff.
+..c99999999999999999911111111bf..
+..c9999991111119999999111111bf...
+..c99999111111119999991111bbbf...
+..c9999bcccccccccc9999bfffbbf....
+..c9999c.fbbf.....c999f..fbbf....
+.c9999cc.fbbf.....c999f..fbbf....
+.c999cc..fbf.......c99f..fbbf....
+.c99cc..fbbf.......c99f..fbbf....
+.c99c...fbbf.......c99f..fbbf....
+.c99c...fbbbf......c99f..fbbf....
+.c9bc....ffff......c99f..fbbbf...
+.c999c.............c999f..fbbf...
+.c999c.............cc99f..ffff...
+..cccc..............cfff.........
+`;
+            case "image18":
+            case "Skovgaard":return img`
+bbbb........bbbb.................
+c99bb......bb99b.................
+c999bb....bb999c.................
+c9b99bccccb99b9c.................
+c9bb99bccb99bb9c.................
+c93b99999999b39c.................
+c93399999999339c.................
+c99399999999399c.................
+c99999991199999c.................
+c99922911192299c........bbbbbb...
+c99922911112299c.......c999999bb.
+c99991111111999c......c99999999b.
+c9991111fff1199c.....c9991119999b
+c999c11fff1199bc.....c9911111999b
+c999cc111111c9bc.....c911dd11199b
+c99999bb33cc99bcc....cbddbbd1199c
+c999999b33c99999bbccccbbdbbb1199c
+c9999999bb9999999999999999bb1999c
+c999911119999999999999999999b999c
+c999111111999999999999999999999c.
+c99911111119999999999999999999cc.
+c99111111119999999999999999999c..
+c99111111111999999999999999999c..
+cb9111111111999999999999999999c..
+.f9111111111999999999999999999c..
+.ff111111111999999999999999999c..
+..fb11111111999999999999999999c..
+...fb1111119999999111111999999c..
+...fbbb11119999991111111199999c..
+....fbbfffb9999ccccccccccb9999c..
+....fbbf..f999c.....fbbf.c9999c..
+....fbbf..f999c.....fbbf.cc9999c.
+....fbbf..f99c.......fbf..cc999c.
+....fbbf..f99c.......fbbf..cc99c.
+....fbbf..f99c.......fbbf...c99c.
+....fbbf..f99c......fbbbf...c99c.
+...fbbbf..f99c......ffff....cb9c.
+...fbbf..f999c.............c999c.
+...ffff..f99cc.............c999c.
+.........fffc..............cccc..
+`;
+            case "image19":
+            case "Jodim":return img`
+e e e . . . . e e e . . . . 
+c d d c . . c d d c . . . . 
+c b d d f f d d b c . . . . 
+c 3 b d d b d b 3 c . . . . 
+f b 3 d d d d 3 b f . . . . 
+e d d d d d d d d e . . . . 
+e d f 2 d d 2 f d e . b f b 
+f d d d d d d d d f . f d f 
+f b d d b b d d 2 f . f d f 
+. f 2 2 2 2 2 2 b b f f d f 
+. f b d d d d d d b b d b f 
+. f d d d d d b d d f f f . 
+. f d f f f d f f d f . . . 
+. f f . . f f . . f f . . . 
+`;
         }
         return null;
     })
@@ -644,6 +747,100 @@ c 5 d 1 d d c .
 . c d d 1 d 5 c 
 . . f d d d f . 
 . . . f f f . . 
+`];
+            case "Jodim-walk-R":
+            case "anim3":return [img`
+. . . . e e e . . . . e e e 
+. . . . c d d c . . c d d c 
+. . . . c b d d f f d d b c 
+. . . . c 3 b d b d d b 3 c 
+. . . . f b 3 d d d d 3 b f 
+. . . . e d d d d d d d d e 
+b f b . e d f 2 d d 2 f d e 
+f d f . f d d d d d d d d f 
+f d f . f 2 d d b b d d b f 
+f d f f b b 2 2 2 2 2 2 f . 
+f b d b b d d d d d d b f . 
+. f f f d d b d d d d d f . 
+. . . f d f f d f f f d f . 
+. . . f f . . f f . . f f . 
+`, img`
+. . . . . . . . . . . . . . 
+. . . . e e e . . . . e e e 
+. . . . c d d c . . c d d c 
+. . . . c b d d f f d d b c 
+. . . . c 3 b d b d d b 3 c 
+. . . . f b 3 d d d d 3 b f 
+. . . . e d d d d d d d d e 
+. b f b e d f 2 d d 2 f d e 
+. f d f f d d d d d d d d f 
+. f d f b 2 d d b b d d b f 
+. f b d b d 2 2 2 2 2 2 f . 
+. . f f f d d d d d d d f . 
+. . . . f d f f f d b d f . 
+. . . . f f . . f f f f . . 
+`, img`
+. . . . . . . . . . . . . . 
+. . . . e e e . . . . e e e 
+. . . . c d d c . . c d d c 
+. . . . c b d d f f d d b c 
+. . . . c 3 b d b d d b 3 c 
+. . . . f b 3 d d d d 3 b f 
+. . . . e d d d d d d d d e 
+b f b . e d f 2 d d 2 f d e 
+f d f . f d d d d d d d d f 
+f d f f b 2 d d b b d d b f 
+f b d b b d 2 2 2 2 2 2 f . 
+. f f f f d d d d d d d f . 
+. . . . . f d f d b d f . . 
+. . . . . f f f f f f . . . 
+`];
+            case "Jodim-walk-L":
+            case "anim4":return [img`
+e e e . . . . e e e . . . . 
+c d d c . . c d d c . . . . 
+c b d d f f d d b c . . . . 
+c 3 b d d b d b 3 c . . . . 
+f b 3 d d d d 3 b f . . . . 
+e d d d d d d d d e . . . . 
+e d f 2 d d 2 f d e . b f b 
+f d d d d d d d d f . f d f 
+f b d d b b d d 2 f . f d f 
+. f 2 2 2 2 2 2 b b f f d f 
+. f b d d d d d d b b d b f 
+. f d d d d d b d d f f f . 
+. f d f f f d f f d f . . . 
+. f f . . f f . . f f . . . 
+`, img`
+. . . . . . . . . . . . . . 
+e e e . . . . e e e . . . . 
+c d d c . . c d d c . . . . 
+c b d d f f d d b c . . . . 
+c 3 b d d b d b 3 c . . . . 
+f b 3 d d d d 3 b f . . . . 
+e d d d d d d d d e . . . . 
+e d f 2 d d 2 f d e b f b . 
+f d d d d d d d d f f d f . 
+f b d d b b d d 2 b f d f . 
+. f 2 2 2 2 2 2 d b d b f . 
+. f d d d d d d d f f f . . 
+. f d b d f f f d f . . . . 
+. . f f f f . . f f . . . . 
+`, img`
+. . . . . . . . . . . . . . 
+e e e . . . . e e e . . . . 
+c d d c . . c d d c . . . . 
+c b d d f f d d b c . . . . 
+c 3 b d d b d b 3 c . . . . 
+f b 3 d d d d 3 b f . . . . 
+e d d d d d d d d e . . . . 
+e d f 2 d d 2 f d e . b f b 
+f d d d d d d d d f . f d f 
+f b d d b b d d 2 b f f d f 
+. f 2 2 2 2 2 2 d b b d b f 
+. f d d d d d d d f f f f . 
+. . f d b d f d f . . . . . 
+. . . f f f f f f . . . . . 
 `];
         }
         return null;

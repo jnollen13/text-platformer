@@ -38,12 +38,23 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, l
     tiles.setTileAt(tiles.getTileLocation(11, 24), assets.tile`myTile`)
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.runImageAnimation(
-    mySprite,
-    assets.animation`playeral`,
-    335,
-    true
-    )
+    if (character == 1) {
+        animation.runImageAnimation(
+        mySprite,
+        assets.animation`Jodim-walk-L`,
+        250,
+        true
+        )
+    } else if (character == 2) {
+        mySprite.setImage(assets.image`Skovgaard`)
+    } else {
+        animation.runImageAnimation(
+        mySprite,
+        assets.animation`playeral`,
+        335,
+        true
+        )
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
     if (v3 == 1) {
@@ -186,12 +197,23 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    animation.runImageAnimation(
-    mySprite,
-    assets.animation`playera`,
-    355,
-    true
-    )
+    if (character == 1) {
+        animation.runImageAnimation(
+        mySprite,
+        assets.animation`Jodim-walk-R`,
+        250,
+        true
+        )
+    } else if (character == 2) {
+        mySprite.setImage(assets.image`SkovgaardR`)
+    } else {
+        animation.runImageAnimation(
+        mySprite,
+        assets.animation`playera`,
+        355,
+        true
+        )
+    }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, location) {
     mySprite.vy += 32
@@ -275,6 +297,7 @@ let jump = 0
 let select = 0
 let story_mode = 0
 let lvl1not = 0
+let character = 0
 let sound = 0
 let speedrun = 0
 let gravityud = 0
@@ -313,6 +336,17 @@ if (story.checkLastAnswer("sound on?")) {
     sound = 1
 } else if (story.checkLastAnswer("sound off?")) {
     sound = 0
+}
+story.showPlayerChoices("Play as default character", "Play as Jodim", "Play as Skovgaard")
+if (story.checkLastAnswer("Play as Jodim")) {
+    character = 1
+    mySprite.setImage(assets.image`Jodim`)
+} else if (story.checkLastAnswer("Play as Skovgaard")) {
+    character = 2
+    mySprite.setImage(assets.image`SkovgaardR`)
+    mySprite.setScale(0.4, ScaleAnchor.Middle)
+} else {
+    character = 0
 }
 story.showPlayerChoices("in order (Recommended)", "random level", "level select")
 if (story.checkLastAnswer("in order (Recommended)")) {
