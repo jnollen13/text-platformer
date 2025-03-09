@@ -46,7 +46,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     )
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, location) {
-    if (select == 1) {
+    if (v3 == 1) {
         game.showLongText("Level complete.", DialogLayout.Full)
         game.reset()
     } else {
@@ -154,6 +154,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
             tiles.setCurrentTilemap(tilemap`level18`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
         }
+        if (select == 1) {
+            v3 = 1
+        }
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -238,6 +241,7 @@ let mySprite5: Sprite = null
 let mySprite4: Sprite = null
 let mySprite3: Sprite = null
 let mySprite2: Sprite = null
+let v3 = 0
 let jump = 0
 let select = 0
 let lvl1not = 0
