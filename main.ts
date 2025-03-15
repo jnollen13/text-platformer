@@ -236,6 +236,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
                 game.showLongText("let's do gravity jumping now too!", DialogLayout.Center)
             }
         } else if (lvl == 13) {
+            sprites.destroyAllSpritesOfKind(SpriteKind.collectible)
             game.showLongText("starting level 14", DialogLayout.Full)
             delay += 1
             tiles.setCurrentTilemap(tilemap`level25`)
@@ -345,12 +346,18 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.coinlvl3, function (sprite, othe
     tiles.setTileAt(tiles.getTileLocation(23, 8), assets.tile`myTile0`)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    if (sound == 1) {
-        music.play(music.melodyPlayable(music.powerDown), music.PlaybackMode.InBackground)
-    }
-    game.splash("Congratulations!", "You were stabbed...")
-    if (lvl == 4) {
-        tiles.placeOnTile(mySprite, tiles.getTileLocation(31, 1))
+    if (!(hits == 9)) {
+        if (sound == 1) {
+            music.play(music.melodyPlayable(music.powerDown), music.PlaybackMode.InBackground)
+        }
+        game.splash("Congratulations!", "You were stabbed...")
+        hits += 1
+        if (lvl == 4) {
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(31, 1))
+        }
+    } else if (hits == 9) {
+        game.setGameOverMessage(false, "You were stabbed...")
+        game.gameOver(false)
     }
 })
 let v2 = 0
@@ -382,6 +389,8 @@ let mySprite: Sprite = null
 let lvl = 0
 let go = 0
 let start = 0
+let hits = 0
+hits = 0
 scene.setBackgroundImage(assets.image`bg`)
 start = 1
 go = 0
