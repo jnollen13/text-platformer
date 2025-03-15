@@ -1,10 +1,14 @@
 namespace SpriteKind {
     export const coinlvl3 = SpriteKind.create()
     export const bird = SpriteKind.create()
+    export const collectible = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile1`, function (sprite, location) {
     game.splash("no cheating", "or skips for you")
     game.reset()
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile19`, function (sprite, location) {
+    mySprite.vy += -2
 })
 function jumping () {
     if (start == 0) {
@@ -22,6 +26,14 @@ function jumping () {
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     jumping()
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.collectible, function (sprite, otherSprite) {
+    if (sound == 1) {
+        music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
+        music.play(music.melodyPlayable(music.thump), music.PlaybackMode.InBackground)
+    }
+    sprites.destroyAllSpritesOfKind(SpriteKind.collectible, effects.confetti, 2)
+    delay += 2111
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile15`, function (sprite, location) {
     if (controller.B.isPressed()) {
@@ -149,14 +161,16 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
             mySprite14.setVelocity(0, 10)
             if (story_mode == 1) {
                 game.showLongText("Beware the spikes...", DialogLayout.Center)
+                delay += 101
             }
         } else if (lvl == 5) {
             sprites.destroyAllSpritesOfKind(SpriteKind.Enemy)
-            game.showLongText("starting level 6", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level6`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
+            game.showLongText("starting level 6", DialogLayout.Full)
             if (story_mode == 1) {
                 game.showLongText("Ladders with the bottoms floating above lava!? Isn't that awesome?", DialogLayout.Center)
+                delay += 1
             }
         } else if (lvl == 6) {
             game.showLongText("starting level 7", DialogLayout.Full)
@@ -165,13 +179,15 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
             if (story_mode == 1) {
                 game.showLongText("There is a second way out of this area but you melt in it which makes it kind of hard to use...", DialogLayout.Center)
             }
+            delay += 4
         } else if (lvl == 7) {
             game.showLongText("starting level 8", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level11`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 14))
-            game.showLongText("Jumps so far you can't see the next platform. what's next!", DialogLayout.Bottom)
+            if (story_mode == 1) {
+                game.showLongText("Jumps so far you can't see the next platform. what's next!", DialogLayout.Bottom)
+            }
         } else if (lvl == 8) {
-            game.showLongText("starting level 9", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level15`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 168))
             birdtype = randint(1, 2)
@@ -180,21 +196,64 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
             bird2.setVelocity(-75, 0)
             go = 1
             bird2.setBounceOnWall(true)
+            game.showLongText("starting level 9", DialogLayout.Full)
         } else if (lvl == 9) {
+            tiles.setCurrentTilemap(tilemap`level-perfect skill`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 19))
             game.showLongText("starting level 10", DialogLayout.Full)
             if (story_mode == 1) {
                 game.showLongText("In this area there are high gravity places that will pull you into lava. fun, right?", DialogLayout.Bottom)
+                delay += 3
             }
-            tiles.setCurrentTilemap(tilemap`level-perfect skill`)
-            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 19))
         } else if (lvl == 10) {
-            tiles.setCurrentTilemap(tilemap`level36`)
+            tiles.setCurrentTilemap(tilemap`level9`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 19))
+            game.showLongText("starting level 11", DialogLayout.Full)
+            if (story_mode == 1) {
+                game.showLongText("Reversed gravity areas now too? The crazier the better!", DialogLayout.Bottom)
+            }
+        } else if (lvl == 11) {
+            tiles.setCurrentTilemap(tilemap`level17`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 15))
+            game.showLongText("starting level 12", DialogLayout.Full)
+        } else if (lvl == 12) {
+            game.showLongText("starting level 13", DialogLayout.Full)
+            delay += 1
+            tiles.setCurrentTilemap(tilemap`level23`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 30))
+            mySprite2 = sprites.create(assets.image`coin`, SpriteKind.collectible)
+            animation.runImageAnimation(
+            mySprite2,
+            assets.animation`coinanimation`,
+            111,
+            true
+            )
+            tiles.placeOnTile(mySprite2, tiles.getTileLocation(31, 22))
+        } else if (lvl == 13) {
+            tiles.setCurrentTilemap(tilemap`level25`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
         }
         if (select == 1) {
             v3 = 1
         }
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile21`, function (sprite, location) {
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 10))
+    pause(100)
+    tiles.setTileAt(tiles.getTileLocation(9, 13), assets.tile`normal-lava`)
+    tiles.setTileAt(tiles.getTileLocation(10, 13), assets.tile`normal-lava`)
+    tiles.setTileAt(tiles.getTileLocation(11, 13), assets.tile`normal-lava`)
+    tiles.setTileAt(tiles.getTileLocation(12, 13), assets.tile`normal-lava`)
+    tiles.setTileAt(tiles.getTileLocation(16, 13), assets.tile`normal-lava`)
+    tiles.setTileAt(tiles.getTileLocation(17, 13), assets.tile`normal-lava`)
+    tiles.setTileAt(tiles.getTileLocation(18, 13), assets.tile`normal-lava`)
+    tiles.setTileAt(tiles.getTileLocation(19, 13), assets.tile`normal-lava`)
+    tiles.setTileAt(tiles.getTileLocation(20, 13), assets.tile`normal-lava`)
+    tiles.setWallAt(tiles.getTileLocation(9, 13), false)
+    tiles.setWallAt(tiles.getTileLocation(10, 13), false)
+    tiles.setWallAt(tiles.getTileLocation(11, 13), false)
+    tiles.setWallAt(tiles.getTileLocation(12, 13), false)
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     if (character == 1) {
@@ -216,7 +275,7 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile17`, function (sprite, location) {
-    mySprite.vy += 32
+    mySprite.vy += 24
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite, location) {
     mySprite.setVelocity(-999, 0)
@@ -224,12 +283,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile8`, function (sprite, l
 })
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite.vy += 21
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile2`, function (sprite, location) {
-    game.setGameOverPlayable(false, music.melodyPlayable(music.spooky), false)
-    game.setGameOverEffect(false, effects.melt)
-    game.setGameOverMessage(false, "You melted in lava")
-    game.gameOver(false)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile5`, function (sprite, location) {
     if (controller.up.isPressed()) {
@@ -254,6 +307,16 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.bird, function (sprite, otherSpr
         music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.InBackground)
     }
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`normal-lava`, function (sprite, location) {
+    game.setGameOverPlayable(false, music.melodyPlayable(music.spooky), false)
+    game.setGameOverEffect(false, effects.melt)
+    game.setGameOverMessage(false, "You melted in lava")
+    game.gameOver(false)
+})
+function selectfunction () {
+    tiles.setCurrentTilemap(tilemap`levelrandit`)
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+}
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile14`, function (sprite, location) {
     tiles.placeOnRandomTile(mySprite, assets.tile`myTile`)
 })
@@ -362,7 +425,7 @@ if (story.checkLastAnswer("in order (Recommended)")) {
         lvl1not = 1
     }
 } else if (story.checkLastAnswer("random level")) {
-    lvl = randint(1, 8)
+    lvl = randint(1, 11)
     tiles.setCurrentTilemap(tilemap`levelrandit`)
     tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
     lvl1not = 0
@@ -373,7 +436,7 @@ if (story.checkLastAnswer("in order (Recommended)")) {
     if (story.checkLastAnswer("higher")) {
         story.showPlayerChoices("level 4", "level 5", "level 6", "higher")
         if (story.checkLastAnswer("higher")) {
-            story.showPlayerChoices("level 7", "level 8", "level 9", "level 10")
+            story.showPlayerChoices("level 7", "level 8", "level 9", "higher")
             if (story.checkLastAnswer("level 7")) {
                 lvl = 5
                 tiles.setCurrentTilemap(tilemap`levelrandit`)
@@ -386,10 +449,22 @@ if (story.checkLastAnswer("in order (Recommended)")) {
                 lvl = 7
                 tiles.setCurrentTilemap(tilemap`levelrandit`)
                 tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
-            } else if (story.checkLastAnswer("level 10")) {
-                lvl = 8
-                tiles.setCurrentTilemap(tilemap`levelrandit`)
-                tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+            } else if (story.checkLastAnswer("higher")) {
+                story.showPlayerChoices("level 10", "level 11", "level 12", "level 13")
+                if (story.checkLastAnswer("level 11")) {
+                    lvl = 9
+                    tiles.setCurrentTilemap(tilemap`levelrandit`)
+                    tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+                } else if (story.checkLastAnswer("level 10")) {
+                    lvl = 8
+                    selectfunction()
+                } else if (story.checkLastAnswer("level 12")) {
+                    lvl = 10
+                    selectfunction()
+                } else if (story.checkLastAnswer("level 13")) {
+                    lvl = 11
+                    selectfunction()
+                }
             }
         } else if (story.checkLastAnswer("level 4")) {
             lvl = 2
@@ -468,8 +543,17 @@ game.onUpdate(function () {
         }
     }
 })
+game.onUpdate(function () {
+    if (mySprite.tileKindAt(TileDirection.Top, assets.tile`myTile20`)) {
+        if (lvl == 11) {
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(3, 14))
+        } else if (lvl == 12) {
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(3, 29))
+        }
+    }
+})
 game.onUpdateInterval(61328, function () {
     if (sound == 1 && Math.percentChance(13.2)) {
-        music.play(music.createSong(assets.song`song0`), music.PlaybackMode.UntilDone)
+        music.play(music.createSong(assets.song`Main theme`), music.PlaybackMode.UntilDone)
     }
 })
