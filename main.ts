@@ -216,6 +216,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
             tiles.setCurrentTilemap(tilemap`level17`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 15))
             game.showLongText("starting level 12", DialogLayout.Full)
+            if (story_mode == 1) {
+                game.showLongText("have fun ladder jumping!", DialogLayout.Center)
+            }
         } else if (lvl == 12) {
             game.showLongText("starting level 13", DialogLayout.Full)
             delay += 1
@@ -229,8 +232,19 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
             true
             )
             tiles.placeOnTile(mySprite2, tiles.getTileLocation(31, 22))
+            if (story_mode == 1) {
+                game.showLongText("let's do gravity jumping now too!", DialogLayout.Center)
+            }
         } else if (lvl == 13) {
+            game.showLongText("starting level 14", DialogLayout.Full)
+            delay += 1
             tiles.setCurrentTilemap(tilemap`level25`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 8))
+            if (story_mode == 1) {
+                game.showLongText("it's easier now... so disappointing...  :(", DialogLayout.Center)
+            }
+        } else if (lvl == 14) {
+            tiles.setCurrentTilemap(tilemap`level27`)
             tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
         }
         if (select == 1) {
