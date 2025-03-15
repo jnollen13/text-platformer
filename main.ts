@@ -245,8 +245,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
                 game.showLongText("it's easier now... so disappointing...  :(", DialogLayout.Center)
             }
         } else if (lvl == 14) {
+            game.showLongText("starting level 15", DialogLayout.Full)
             tiles.setCurrentTilemap(tilemap`level27`)
-            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(29, 23))
         }
         if (select == 1) {
             v3 = 1
@@ -332,6 +333,10 @@ function selectfunction () {
     tiles.setCurrentTilemap(tilemap`levelrandit`)
     tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile23`, function (sprite, location) {
+    mySprite.ay = 0
+    controller.moveSprite(mySprite)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile14`, function (sprite, location) {
     tiles.placeOnRandomTile(mySprite, assets.tile`myTile`)
 })
@@ -528,26 +533,6 @@ if (lvl1not == 1) {
 }
 let delay = game.runtime()
 game.onUpdate(function () {
-    if (!(mySprite.isHittingTile(CollisionDirection.Bottom))) {
-        animation.stopAnimation(animation.AnimationTypes.ImageAnimation, mySprite)
-        v2 = 1
-        controller.moveSprite(mySprite, 31, 0)
-        if (gravityud == 0) {
-            mySprite.ay = 50
-        }
-        if (jump == 0) {
-            jump = 1
-        }
-    } else if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
-        mySprite.setBounceOnWall(false)
-        jump = 0
-        controller.moveSprite(mySprite, 60, 0)
-        if (v2 == 1) {
-            v2 = 0
-        }
-    }
-})
-game.onUpdate(function () {
     if (speedrun == 1) {
         info.setScore(game.runtime() - delay)
     }
@@ -572,6 +557,26 @@ game.onUpdate(function () {
             tiles.placeOnTile(mySprite, tiles.getTileLocation(3, 14))
         } else if (lvl == 12) {
             tiles.placeOnTile(mySprite, tiles.getTileLocation(3, 29))
+        }
+    }
+})
+game.onUpdate(function () {
+    if (!(mySprite.isHittingTile(CollisionDirection.Bottom))) {
+        animation.stopAnimation(animation.AnimationTypes.ImageAnimation, mySprite)
+        v2 = 1
+        controller.moveSprite(mySprite, 31, 0)
+        if (gravityud == 0) {
+            mySprite.ay = 50
+        }
+        if (jump == 0) {
+            jump = 1
+        }
+    } else if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
+        mySprite.setBounceOnWall(false)
+        jump = 0
+        controller.moveSprite(mySprite, 60, 0)
+        if (v2 == 1) {
+            v2 = 0
         }
     }
 })
