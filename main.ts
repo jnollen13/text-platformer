@@ -254,6 +254,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
         }
     }
 })
+scene.onOverlapTile(SpriteKind.Player, assets.tile`restart-lava`, function (sprite, location) {
+    tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 19))
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile21`, function (sprite, location) {
     tiles.placeOnTile(mySprite, tiles.getTileLocation(1, 10))
     pause(100)
