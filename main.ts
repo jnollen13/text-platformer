@@ -13,7 +13,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile19`, function (sprite, 
 function jumping () {
     if (start == 0) {
         if (jump == 0 || jump == 1) {
-            mySprite.vy = randint(-48, -59)
+            mySprite.vy = randint(-69, -80)
             if (jump == 1) {
                 mySprite.startEffect(effects.trail, randint(222, 777))
             }
@@ -48,6 +48,9 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, l
     tiles.setTileAt(tiles.getTileLocation(11, 25), assets.tile`myTile`)
     tiles.setWallAt(tiles.getTileLocation(11, 24), false)
     tiles.setTileAt(tiles.getTileLocation(11, 24), assets.tile`myTile`)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile25`, function (sprite, location) {
+    mySprite.vy += -2
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     if (character == 1) {
@@ -246,8 +249,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile3`, function (sprite, l
             }
         } else if (lvl == 14) {
             game.showLongText("starting level 15", DialogLayout.Full)
-            tiles.setCurrentTilemap(tilemap`level27`)
-            tiles.placeOnTile(mySprite, tiles.getTileLocation(29, 23))
+            tiles.setCurrentTilemap(tilemap`level015`)
+            tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 46))
         }
         if (select == 1) {
             v3 = 1
@@ -352,6 +355,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.coinlvl3, function (sprite, othe
     tiles.setTileAt(tiles.getTileLocation(23, 7), assets.tile`myTile0`)
     tiles.setWallAt(tiles.getTileLocation(23, 8), false)
     tiles.setTileAt(tiles.getTileLocation(23, 8), assets.tile`myTile0`)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile26`, function (sprite, location) {
+    if (controller.up.isPressed()) {
+        mySprite.vy += -5
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     if (!(hits == 9)) {
@@ -481,7 +489,7 @@ if (story.checkLastAnswer("in order (Recommended)")) {
                 tiles.setCurrentTilemap(tilemap`levelrandit`)
                 tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 0))
             } else if (story.checkLastAnswer("higher")) {
-                story.showPlayerChoices("level 10", "level 11", "level 12", "level 13")
+                story.showPlayerChoices("level 10", "level 11", "level 12", "higher")
                 if (story.checkLastAnswer("level 11")) {
                     lvl = 9
                     tiles.setCurrentTilemap(tilemap`levelrandit`)
@@ -492,9 +500,15 @@ if (story.checkLastAnswer("in order (Recommended)")) {
                 } else if (story.checkLastAnswer("level 12")) {
                     lvl = 10
                     selectfunction()
-                } else if (story.checkLastAnswer("level 13")) {
-                    lvl = 11
-                    selectfunction()
+                } else if (story.checkLastAnswer("higher")) {
+                    story.showPlayerChoices("level 13", "level 14")
+                    if (story.checkLastAnswer("level 13")) {
+                        lvl = 11
+                        selectfunction()
+                    } else if (story.checkLastAnswer("level 14")) {
+                        lvl = 12
+                        selectfunction()
+                    }
                 }
             }
         } else if (story.checkLastAnswer("level 4")) {
@@ -560,6 +574,8 @@ game.onUpdate(function () {
             tiles.placeOnTile(mySprite, tiles.getTileLocation(3, 14))
         } else if (lvl == 12) {
             tiles.placeOnTile(mySprite, tiles.getTileLocation(3, 29))
+        } else {
+            mySprite.y += -16
         }
     }
 })
@@ -567,9 +583,9 @@ game.onUpdate(function () {
     if (!(mySprite.isHittingTile(CollisionDirection.Bottom))) {
         animation.stopAnimation(animation.AnimationTypes.ImageAnimation, mySprite)
         v2 = 1
-        controller.moveSprite(mySprite, 31, 0)
+        controller.moveSprite(mySprite, 41, 0)
         if (gravityud == 0) {
-            mySprite.ay = 50
+            mySprite.ay = 100
         }
         if (jump == 0) {
             jump = 1
