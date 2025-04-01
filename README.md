@@ -1,7 +1,7 @@
  
 
 
-> Open this page at [https://jnollen13.github.io/text-platformer/](https://jnollen13.github.io/text-platformer/)
+> Open this page at https://arcade.makecode.com/S45267-02305-36406-8170
 
 ## Use as Extension
 
